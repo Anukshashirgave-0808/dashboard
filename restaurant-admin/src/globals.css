@@ -1,0 +1,24 @@
+/* Import Tailwind Preflight and Utilities (v4) */
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+
+/* Custom CSS Variables */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* Dark mode variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Body styling */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
