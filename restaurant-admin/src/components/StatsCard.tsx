@@ -39,25 +39,25 @@ export default function StatsCard({
   const getGradient = () => {
     switch (icon) {
       case 'orders':
-        return 'bg-gradient-to-br from-blue-500 to-blue-600';
+        return 'bg-gradient-to-br from-cyan-500 to-indigo-600';
       case 'pending':
-        return 'bg-gradient-to-br from-yellow-500 to-orange-500';
+        return 'bg-gradient-to-br from-orange-500 to-orange-600';
       case 'delivered':
-        return 'bg-gradient-to-br from-green-500 to-green-600';
+        return 'bg-gradient-to-br from-emerald-500 to-emerald-600';
       default:
-        return 'bg-gradient-to-br from-purple-500 to-purple-600';
+        return 'bg-gradient-to-br from-indigo-500 to-cyan-600';
     }
   };
 
   return (
-    <div className="bg-white p-10 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 border border-slate-100 hover:scale-105 hover:-translate-y-2 relative overflow-hidden group animate-fade-in-up">
+    <div className="bg-gradient-to-br from-[#1a2847]/40 via-[#0f1729]/40 to-[#1a2847]/40 p-10 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 border border-cyan-500/20 hover:border-cyan-400/40 hover:scale-105 hover:-translate-y-2 relative overflow-hidden group animate-fade-in-up">
       {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
       
       <div className="flex items-center justify-between relative z-10">
         <div className="flex-1">
-          <p className="text-slate-500 text-lg font-bold uppercase tracking-wider mb-4">{title}</p>
-          <h2 className="text-6xl font-black mt-4 text-slate-800 group-hover:text-slate-900 transition-colors duration-300 leading-none">{value}</h2>
+          <p className="text-cyan-300/70 text-lg font-bold uppercase tracking-wider mb-4">{title}</p>
+          <h2 className="text-6xl font-black mt-4 text-cyan-100 group-hover:text-cyan-50 transition-colors duration-300 leading-none">{value}</h2>
         </div>
         <div className={`p-6 rounded-3xl ${getGradient()} shadow-3xl group-hover:scale-110 transition-all duration-300 relative`}>
           {/* Glow effect */}

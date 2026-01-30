@@ -8,9 +8,11 @@
 /* GLOBAL THEME VARIABLES */
 /* ============================= */
 :root {
-  --background: #000000;       /* pure black */
-  --foreground: #f5b041;       /* gold */
-  --accent-orange: #fb923c;    /* orange */
+  --background: #0a0e27;       /* deep navy-black */
+  --foreground: #e8f0f5;       /* light blue-white */
+  --accent-orange: #ff6b35;    /* vibrant coral */
+  --accent-primary: #4f46e5;   /* indigo */
+  --accent-secondary: #06b6d4; /* cyan */
 }
 
 /* ============================= */
