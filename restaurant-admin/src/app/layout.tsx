@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "@/globals.css"; // Make sure globals.css is in src/
+import "@/globals.css";
 
+// Load Google fonts
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -12,6 +13,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Metadata for the site
 export const metadata: Metadata = {
   title: "Restaurant Admin Panel",
   description: "Admin panel for managing restaurant orders",
@@ -21,14 +23,15 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-black">
       <body
         className={`
-          ${geistSans.variable} ${geistMono.variable} 
-          antialiased 
-          bg-(--background)
-          text-(--foreground)
+          ${geistSans.variable} 
+          ${geistMono.variable}
+          antialiased
           min-h-screen
+          bg-black
+          text-[#F5B041]
         `}
       >
         {children}

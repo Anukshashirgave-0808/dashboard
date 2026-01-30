@@ -1,24 +1,180 @@
-/* Import Tailwind Preflight and Utilities (v4) */
+/* ============================= */
+/* TAILWIND BASE IMPORTS */
+/* ============================= */
 @import "tailwindcss/preflight";
 @import "tailwindcss/utilities";
 
-/* Custom CSS Variables */
+/* ============================= */
+/* GLOBAL THEME VARIABLES */
+/* ============================= */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;       /* pure black */
+  --foreground: #f5b041;       /* gold */
+  --accent-orange: #fb923c;    /* orange */
 }
 
-/* Dark mode variables */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-/* Body styling */
+/* ============================= */
+/* STRICT BLACK THEME - BODY BASE STYLES */
+/* ============================= */
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================= */
+/* TEXT HELPERS */
+/* ============================= */
+.text-gold {
+  color: var(--foreground);
+}
+
+.text-orange {
+  color: var(--accent-orange);
+}
+
+/* ============================= */
+/* LINKS */
+/* ============================= */
+a {
+  color: var(--accent-orange);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--foreground);
+}
+
+/* ============================= */
+/* INPUT / FORM BASE STYLES */
+/* ============================= */
+input,
+textarea,
+select {
+  background-color: var(--background);
+  color: var(--foreground);
+  border: 1px solid rgba(245, 176, 65, 0.4);
+  padding: 0.5rem;
+  border-radius: 0.375rem; /* Tailwind rounded-md */
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(251, 146, 60, 0.4);
+}
+
+/* ============================= */
+/* BUTTON BASE STYLES */
+/* ============================= */
+button {
+  font-family: inherit;
+  background-color: var(--accent-orange);
+  color: var(--background);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+/* ============================= */
+/* ANIMATIONS */
+/* ============================= */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes gradient-x {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+/* ============================= */
+/* ANIMATION UTILITIES */
+/* ============================= */
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out both;
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.8s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out 0.5s both;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-gradient-x {
+  animation: gradient-x 3s ease infinite;
+}
+
+/* ============================= */
+/* OVERRIDES TO PREVENT WHITE FLASHES */
+/* ============================= */
+html,
+body {
+  background-color: var(--background);
+  color: var(--foreground);
 }

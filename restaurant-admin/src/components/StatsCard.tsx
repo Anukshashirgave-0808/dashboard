@@ -50,14 +50,21 @@ export default function StatsCard({
   };
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105">
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-gray-500 text-sm font-medium uppercase tracking-wide">{title}</p>
-          <h2 className="text-3xl font-bold mt-2 text-gray-800">{value}</h2>
+    <div className="bg-white p-10 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 border border-slate-100 hover:scale-105 hover:-translate-y-2 relative overflow-hidden group animate-fade-in-up">
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+      
+      <div className="flex items-center justify-between relative z-10">
+        <div className="flex-1">
+          <p className="text-slate-500 text-lg font-bold uppercase tracking-wider mb-4">{title}</p>
+          <h2 className="text-6xl font-black mt-4 text-slate-800 group-hover:text-slate-900 transition-colors duration-300 leading-none">{value}</h2>
         </div>
-        <div className={`p-4 rounded-full ${getGradient()} shadow-lg`}>
-          {getIcon()}
+        <div className={`p-6 rounded-3xl ${getGradient()} shadow-3xl group-hover:scale-110 transition-all duration-300 relative`}>
+          {/* Glow effect */}
+          <div className={`absolute inset-0 rounded-3xl ${getGradient()} blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-300`}></div>
+          <div className="relative z-10">
+            {getIcon()}
+          </div>
         </div>
       </div>
     </div>
