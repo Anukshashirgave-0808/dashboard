@@ -1,3 +1,5 @@
+import { ShoppingBag, Clock, CheckCircle } from "lucide-react";
+
 export default function StatsCard({
   title,
   value,
@@ -10,56 +12,55 @@ export default function StatsCard({
   const getIcon = () => {
     switch (icon) {
       case 'orders':
-        return (
-          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-          </svg>
-        );
+        return <ShoppingBag className="w-6 h-6 text-white" strokeWidth={1.5} />;
       case 'pending':
-        return (
-          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        );
+        return <Clock className="w-6 h-6 text-white" strokeWidth={1.5} />;
       case 'delivered':
-        return (
-          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        );
+        return <CheckCircle className="w-6 h-6 text-white" strokeWidth={1.5} />;
       default:
-        return (
-          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-          </svg>
-        );
+        return <ShoppingBag className="w-6 h-6 text-white" strokeWidth={1.5} />;
     }
   };
 
   const getGradient = () => {
     switch (icon) {
       case 'orders':
-        return 'bg-gradient-to-br from-blue-500 to-blue-600';
+        return 'from-blue-600 to-blue-500';
       case 'pending':
-        return 'bg-gradient-to-br from-yellow-500 to-orange-500';
+        return 'from-yellow-600 to-orange-500';
       case 'delivered':
-        return 'bg-gradient-to-br from-green-500 to-green-600';
+        return 'from-emerald-600 to-emerald-500';
       default:
-        return 'bg-gradient-to-br from-purple-500 to-purple-600';
+        return 'from-cyan-600 to-cyan-500';
+    }
+  };
+
+  const getBorderColor = () => {
+    switch (icon) {
+      case 'orders':
+        return 'border-blue-500/30';
+      case 'pending':
+        return 'border-yellow-500/30';
+      case 'delivered':
+        return 'border-emerald-500/30';
+      default:
+        return 'border-cyan-500/30';
     }
   };
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105">
-      <div className="flex items-center justify-between">
+    <div className={`relative group overflow-hidden rounded-2xl border ${getBorderColor()}`}>
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl"></div>
+      <div className="relative p-7 flex items-center justify-between">
         <div>
-          <p className="text-gray-500 text-sm font-medium uppercase tracking-wide">{title}</p>
-          <h2 className="text-3xl font-bold mt-2 text-gray-800">{value}</h2>
+          <p className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">{title}</p>
+          <h2 className="text-4xl font-bold text-white font-mono">{value}</h2>
         </div>
-        <div className={`p-4 rounded-full ${getGradient()} shadow-lg`}>
+        <div className={`p-4 rounded-2xl bg-gradient-to-br ${getGradient()} shadow-2xl group-hover:scale-110 transition-transform duration-300`}>
           {getIcon()}
         </div>
       </div>
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white transition-opacity duration-300"></div>
     </div>
   );
 }
